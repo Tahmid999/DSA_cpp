@@ -7,15 +7,15 @@ void reverse_array(int arr[], int size){
     int temp = 0;
     while (start<=end)
     {
-        // swap(arr[start] , arr[end]);
-        temp = arr[start];
-        arr[start] = arr[end];
-        arr[end] = temp;
-
+        // using inbuild swap function
+        swap(arr[start] , arr[end]);
+        
+        // temp = arr[start];
+        // arr[start] = arr[end];
+        // arr[end] = temp;
         start++;
         end--;
     }
-    
 }
 
 void print_array(int arr[], int size){
