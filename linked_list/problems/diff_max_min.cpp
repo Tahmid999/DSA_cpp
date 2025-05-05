@@ -41,15 +41,21 @@ void print_list(Node* temp)
 void chk_max(Node *temp)
 {
     int max = INT_MIN;
+    int min = INT_MAX;
     while (temp != NULL)
     {
         if (temp->value > max)
         {
             max = temp->value;
         }
+        if (temp->value < min)
+        {
+            min = temp->value;
+        }
+        
         temp = temp->next;
     }
-    cout<<max<<endl;
+    cout<<max-min<<endl;
 }
 
 int main() {

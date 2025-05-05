@@ -15,7 +15,7 @@ class Node
 
 void insert_at_tail(Node* &head, Node* &tail, int val)
 {
-    Node *new_node = new Node(val);
+    Node* new_node = new Node(val);
 
     if (head == NULL)
     {
@@ -25,11 +25,11 @@ void insert_at_tail(Node* &head, Node* &tail, int val)
     }
     tail->next = new_node;
     tail = new_node;
-    
 }
 
-void print_list(Node* temp)
+void print_list(Node* &head)
 {
+    Node* temp = head;
     while (temp != NULL)
     {
         cout<<temp->value<<" ";
@@ -38,23 +38,21 @@ void print_list(Node* temp)
     cout<<endl;
 }
 
-void chk_max(Node *temp)
+void size_of_list(Node* &temp)
 {
-    int max = INT_MIN;
+    int count = 0;
     while (temp != NULL)
     {
-        if (temp->value > max)
-        {
-            max = temp->value;
-        }
+        count++;
         temp = temp->next;
     }
-    cout<<max<<endl;
+    
+    cout<<"size of this linked list is: "<<count<<endl;
 }
 
 int main() {
-    Node *head = NULL;
-    Node *tail = NULL;
+    Node* head = NULL;
+    Node* tail = NULL;
 
     while(true)
     {
@@ -66,7 +64,9 @@ int main() {
         }
         insert_at_tail(head, tail, x);
     }
-    chk_max(head);
+
+    size_of_list(head);
+
 
     return 0;
 }

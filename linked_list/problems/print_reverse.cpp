@@ -24,12 +24,12 @@ void insert_at_tail(Node* &head, Node* &tail, int val)
         return;
     }
     tail->next = new_node;
-    tail = new_node;
-    
+    tail = new_node; 
 }
 
-void print_list(Node* temp)
+void print_list(Node* &head)
 {
+    Node* temp = head;
     while (temp != NULL)
     {
         cout<<temp->value<<" ";
@@ -38,27 +38,32 @@ void print_list(Node* temp)
     cout<<endl;
 }
 
-void chk_max(Node *temp)
+void print_reverse(Node* temp)
 {
-    int max = INT_MIN;
-    while (temp != NULL)
+    if (temp == NULL)
     {
-        if (temp->value > max)
-        {
-            max = temp->value;
-        }
-        temp = temp->next;
+        return;
     }
-    cout<<max<<endl;
+    print_reverse(temp->next);
+    cout<<temp->value<<" ";
+    
 }
 
 int main() {
     Node *head = NULL;
     Node *tail = NULL;
 
+    int n;
+    // cin>>n;
+    int x;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cin>>x;
+    //     insert_at_tail(head, tail, x);
+    // }
+    
     while(true)
     {
-        int x;
         cin>>x;
         if (x == -1)
         {
@@ -66,7 +71,10 @@ int main() {
         }
         insert_at_tail(head, tail, x);
     }
-    chk_max(head);
+
+    print_list(head);
+    cout<<endl;
+    print_reverse(head);
 
     return 0;
 }

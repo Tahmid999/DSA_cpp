@@ -28,28 +28,31 @@ void insert_at_tail(Node* &head, Node* &tail, int val)
     
 }
 
-void print_list(Node* temp)
+int size_list(Node* temp)
 {
+    int cnt = 0;
     while (temp != NULL)
     {
-        cout<<temp->value<<" ";
+        cnt++;
         temp = temp->next;
     }
-    cout<<endl;
+    return cnt;
 }
 
-void chk_max(Node *temp)
+void search_val(Node *temp, int size, int val)
 {
-    int max = INT_MIN;
-    while (temp != NULL)
+    
+    for (int i = 0; i < size; i++)
     {
-        if (temp->value > max)
+        if (temp->value == val)
         {
-            max = temp->value;
+            cout<<i<<endl;
+            return;
         }
         temp = temp->next;
     }
-    cout<<max<<endl;
+    
+    cout<<"-1"<<endl;
 }
 
 int main() {
@@ -66,7 +69,8 @@ int main() {
         }
         insert_at_tail(head, tail, x);
     }
-    chk_max(head);
+    int size = size_list(head);
+    search_val(head, size, 7);
 
     return 0;
 }
